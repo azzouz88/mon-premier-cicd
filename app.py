@@ -1,5 +1,15 @@
 import streamlit as st
 from calcul import ajouter, soustraire
+# On simule la vérification d'une clé d'API secrète
+CLE_SECRETE = os.environ.get("MON_SECRET_PROD", "Pas de clé trouvée")
+
+st.title("🧮 Ma super calculatrice automatisée")
+
+# On affiche un petit statut de sécurité
+if CLE_SECRETE == "SuperMotDePasse123":
+    st.sidebar.success("🔒 Connexion API : Sécurisée et Validée")
+else:
+    st.sidebar.warning("⚠️ Mode dégradé : Clé de sécurité manquante")
 
 st.title("🧮 Ma super calculatrice automatisée")
 st.write("Bienvenue sur mon application déployée en CI/CD !")
