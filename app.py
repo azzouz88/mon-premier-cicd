@@ -1,4 +1,5 @@
 import streamlit as st
+import os  # <-- IL MANQUAIT CETTE LIGNE !
 from calcul import ajouter, soustraire
 # On simule la vérification d'une clé d'API secrète
 CLE_SECRETE = os.environ.get("MON_SECRET_PROD", "Pas de clé trouvée")
