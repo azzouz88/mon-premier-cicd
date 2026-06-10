@@ -17,10 +17,9 @@ jobs:
         with:
           python-version: '3.10'
 
-      # On ajoute l'outil officiel de test
-      - name: Installer pytest
-        run: pip install pytest
+      # Le robot installe streamlit et pytest d'un coup grâce au fichier text
+      - name: Installer les dependances
+        run: pip install -r requirements.txt
 
-      # On demande à pytest de lancer notre fichier de test
       - name: Lancer le test avec pytest
         run: pytest test_calcul.py
