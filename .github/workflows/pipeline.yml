@@ -7,17 +7,21 @@ on:
 jobs:
   verification:
     runs-on: ubuntu-latest
+    
+    # 🔥 C'EST ICI QUE LA MAGIE OPÈRE 🔥
+    strategy:
+      matrix:
+        version-python: ['3.9', '3.10', '3.11']
 
     steps:
       - name: Recuperer le code
         uses: actions/checkout@v4
 
-      - name: Installer Python
+      - name: Installer Python ${{ matrix.version-python }}
         uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: ${{ matrix.version-python }} # Le robot prend dynamiquement la version
 
-      # Le robot installe streamlit et pytest d'un coup grâce au fichier text
       - name: Installer les dependances
         run: pip install -r requirements.txt
 
