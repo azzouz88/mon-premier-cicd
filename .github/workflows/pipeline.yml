@@ -27,3 +27,12 @@ jobs:
 
       - name: Lancer le test avec pytest
         run: pytest test_calcul.py
+        - name: Installer les dependances
+        run: pip install -r requirements.txt
+
+      # 🔍 LE ROBOT INSPECTEUR ICI
+      - name: Verifier le style du code avec Flake8
+        run: flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+
+      - name: Lancer le test avec pytest
+        run: pytest test_calcul.py
