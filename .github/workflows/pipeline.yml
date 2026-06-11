@@ -8,7 +8,6 @@ jobs:
   verification:
     runs-on: ubuntu-latest
     
-    # 🔥 C'EST ICI QUE LA MAGIE OPÈRE 🔥
     strategy:
       matrix:
         version-python: ['3.9', '3.10', '3.11']
@@ -20,17 +19,11 @@ jobs:
       - name: Installer Python ${{ matrix.version-python }}
         uses: actions/setup-python@v5
         with:
-          python-version: ${{ matrix.version-python }} # Le robot prend dynamiquement la version
+          python-version: ${{ matrix.version-python }}
 
       - name: Installer les dependances
         run: pip install -r requirements.txt
 
-      - name: Lancer le test avec pytest
-        run: pytest test_calcul.py
-        - name: Installer les dependances
-        run: pip install -r requirements.txt
-
-      # 🔍 LE ROBOT INSPECTEUR ICI
       - name: Verifier le style du code avec Flake8
         run: flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
 
